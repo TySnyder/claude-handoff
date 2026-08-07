@@ -1,5 +1,34 @@
 # claude-handoff — Completed Work Archive
 
+## 2026-08-07 — Launched: GitHub polish + live Reddit post in r/ClaudeCode
+
+- Added 6 discovery topics to the GitHub repo (`claude-code`, `ai-agents`,
+  `developer-tools`, `claude`, `documentation`, `context-management`); existing
+  description was already solid and left as-is.
+- Installed and onboarded `ego-browser` (ego lite) to drive a real, logged-in browser
+  session for the actual Reddit submission — first-run needed GUI onboarding
+  (profile import) completed by the owner before the CLI would connect.
+- Before posting, read r/ClaudeCode's actual rules via the live page (not assumed):
+  rule 5 requires standalone "Built with Claude" posts to explain what was built, how
+  Claude Code was used, **and what was learned** — "simple project sharing" is
+  supposed to go in the weekly showcase thread instead (confirmed one was active, 81
+  comments). Flagged this to the owner rather than posting the original draft as-is;
+  owner chose to keep it standalone and add a "what I learned" paragraph (genuine
+  reflection: the harder problem turned out to be trust, not memory — and building a
+  self-installing skill that reads a target repo's README made prompt-injection a
+  real design concern, not a hypothetical one).
+- Filled the post via the browser (title, "Built with Claude" flair, 4-paragraph body)
+  and stopped before submitting per the owner's original instruction, for review.
+  Verified the typed content landed correctly by reading the rich-text editor's DOM
+  directly (`innerText`), not just a screenshot — full 1601-character body, no
+  truncation or corruption.
+- Owner said go. Submitted. Independently re-verified the live post afterward by
+  navigating to its permalink and screenshotting the actual rendered page — title,
+  flair, and all 4 paragraphs confirmed correct as published:
+  <https://www.reddit.com/r/ClaudeCode/comments/1vhsfym/a_handoff_doc_claimed_no_code_has_changed_this/>
+- Per the launch plan, Show HN and r/ClaudeAI are intentionally held back — owner
+  wants r/ClaudeAI specifically staggered "a few days" after this post, not same-day.
+
 ## 2026-08-06 — Security-hardened, dogfood-verified twice, go-to-market plan delivered
 
 Driven by an owner goal: make `handoff-install` "thoroughly tested, secure, unique,"
