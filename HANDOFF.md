@@ -1,9 +1,8 @@
 # claude-handoff — Handoff Director
 
-Updated: 2026-08-07 (very late session, still going). README opener is finally
-confirmed final by the owner after several rounds — about to commit. r/ClaudeCode
-post stays as-is. Reddit API credentials abandoned a second time. Detail in
-`HANDOFF-COMPLETED.md`.
+Updated: 2026-08-07 (end of a very long session). README opener finalized and
+committed (`6de48de`). r/ClaudeCode post is live and final. Reddit API credential
+path abandoned twice. Detail in `HANDOFF-COMPLETED.md`.
 
 ## Start here
 
@@ -12,45 +11,44 @@ Read `CLAUDE.md`, then this file, then run `git log --oneline -8` and
 
 ## Current state
 
-**r/ClaudeCode post: final, not being touched.** It has 2 substantive comments now —
-do not delete or repost it. If anything, it's a candidate for replying to those
-comments, not editing.
+Everything from tonight is committed and pushed — working tree is clean. Nothing is
+mid-edit.
 
-**README.md — final wording confirmed by owner, about to commit.** Went through
-several rounds tonight: story hook → owner's own draft merged in → dropped-content
-regression caught and fixed → owner asked for their exact verbatim wording → owner
-then said they preferred the paraphrased version after all → confirmed that as final
-("that right there is it"). Current file state IS the confirmed version — commit it
-as soon as this file is saved, don't re-litigate the wording again.
+**r/ClaudeCode post: final, do not touch.** Live with the story-opener body edit
+applied. It has 2 substantive comments — don't delete/repost; a reply is the only
+reasonable future action, not an edit.
 
-**Reddit post body edit — done.** Prepended the "My AI coding agent said nothing had
-changed..." line as the body's opening paragraph, smoothed the one transition
-sentence it made redundant, verified twice via fresh reloads. Live and correct.
+**README.md: final, committed.** Opens with a concrete story (mirrors the Reddit
+post), then the owner's own content on token-savings/auto-compaction/staying-in-sync
+(paraphrased version, owner-confirmed as final — don't re-litigate wording), then a
+plain-language explanation of the stale-claim detection mechanism. The earlier
+paragraph-2/"problem this solves" redundancy is fixed.
 
-**Reddit API credentials — dropped, don't revisit unprompted.** Tried twice tonight
-(once hit a Responsible Builder Policy registration wall, owner then did some
-additional signup and tried again with the same redirect URI — still didn't work).
-Owner explicitly deprioritized this both times. If it comes up again, the
-push-notification-only cloud routine plan (see prior archive entry) is still the
-right fallback design — don't re-attempt real API posting automation without the
-owner raising it fresh.
+**Reddit API credentials: dropped, don't revisit unprompted.** Hit a Responsible
+Builder Policy registration wall twice, even after the owner completed additional
+Reddit signup steps. If scheduling comes up again, the fallback design is a cloud
+routine that only fires a `PushNotification` reminder (no browser/API access needed
+for that) — actual posting still happens live together via ego-browser, same as
+tonight's post.
 
 ## Open decisions
 
-1. **r/ClaudeAI and Show HN timing.** Landed on r/ClaudeAI Saturday 8/8, Show HN
-   moved off Sunday to "a weekday" — no exact Show HN date confirmed yet. Not
-   actioned tonight; got sidetracked by the Reddit post/README wordsmithing.
-2. Whether the "hosted dashboard on top of this" idea (the one plausible profitable
-   pivot identified) is worth scoping as a separate project — explicitly deferred,
-   not started.
+1. **Show HN date.** r/ClaudeAI is set for Saturday 8/8. Show HN was moved off
+   Sunday for engagement reasons but never got a firm date — needs the owner's input.
+2. Whether the "hosted dashboard on top of claude-handoff" idea (the one plausible
+   profitable pivot from the go-to-market session) is worth scoping separately —
+   explicitly deferred, not started.
 
 ## Next steps
 
-1. Nail down the exact Show HN date, then set up the two `PushNotification`-only
-   cloud routines for r/ClaudeAI and Show HN (environment_id
-   `env_01493wyDbAi3zfXPF89TFWUA`) — notify-only, no posting automation.
+1. Get the owner's Show HN date, then set up two `PushNotification`-only cloud
+   routines (`schedule` skill / `RemoteTrigger`, environment_id
+   `env_01493wyDbAi3zfXPF89TFWUA`) for r/ClaudeAI (Sat 8/8) and Show HN — notify-only,
+   the routine cannot post itself.
 2. Finish the adversarial second-pass review of `README.md` and `templates/` for
-   their own standalone issues — still hasn't happened across multiple sessions now.
+   their own standalone issues — flagged across multiple sessions now, still hasn't
+   happened.
+3. Monitor the r/ClaudeCode post's 2 comments for replies worth engaging with.
 
 ---
 
@@ -61,6 +59,7 @@ Keep this file under 150 lines.
 
 Read `CLAUDE.md` and `HANDOFF.md` in `/Users/ts/github-sites/claude-handoff` in full,
 then run `git log --oneline -8` and `git status --short` to confirm the repo matches
-this file's claims (per this project's own stale-claim rule — this file has drifted
-fast tonight, verify before trusting it). The Reddit post is done; the README rewrite
-is the open thread — get the owner's read on it before touching anything else.
+this file's claims (per this project's own stale-claim rule). Nothing is broken or
+mid-edit — the only real thread is open decision #1 (Show HN date): ask the owner for
+it, then set up the two notification-only routines per Next steps #1. Don't attempt
+Reddit API posting automation again unless the owner explicitly raises it fresh.
