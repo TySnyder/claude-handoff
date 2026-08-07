@@ -1,5 +1,34 @@
 # claude-handoff — Completed Work Archive
 
+## 2026-08-06 — Built and verified the Stop-hook staleness-nudge
+
+Owner decision: yes, build it (had been an open decision blocking work). Built:
+
+- `templates/hooks/check-handoff-staleness.sh` — Stop hook script. On session stop,
+  checks whether any git-tracked file (excluding the handoff files) has uncommitted
+  changes newer than `HANDOFF.md`'s own mtime; if so, emits
+  `{"decision": "block", "reason": ...}` to make Claude reconsider before stopping.
+  Fails open (no `jq`, not a git repo, no `HANDOFF.md` → silent exit 0). Respects
+  `stop_hook_active` so it fires once per turn, not in a loop.
+- `templates/settings.json-snippet.json` — the `hooks.Stop` block to merge into a
+  project's `.claude/settings.json`.
+- `docs/PROTOCOL.md` — new "The staleness-nudge hook (optional)" section explaining
+  what it does, why it's shaped that way (fail-open, fires-once, signal-not-verdict),
+  and the install steps.
+- `README.md` — added as install step 4, linking to the doc section.
+
+Verified by hand (not just read) in a throwaway git repo, using the schema/I-O
+contract pulled from the `update-config` skill rather than assumed from memory:
+confirmed all 4 cases work — no-drift silent exit 0, drift-detected emits valid
+`decision:block` JSON, `stop_hook_active:true` suppresses re-blocking (loop guard),
+and the nudge clears once `HANDOFF.md` is actually touched.
+
+Also installed into this repo's own `.claude/settings.json` + `.claude/hooks/` to
+dogfood it here going forward (validated with `jq -e`). Caveat: since this repo had
+no `.claude/settings.json` before this session, Claude Code's settings watcher likely
+isn't watching `.claude/` yet — needs one `/hooks` open (or a restart) before it's
+actually live in this repo.
+
 ## 2026-08-06 — Dogfood-tested the install path, fixed 3 real gaps it found
 
 Built a throwaway project (`wordcount.py`, a stdlib-only word-frequency CLI) in

@@ -1,7 +1,8 @@
 # claude-handoff — Handoff Director
 
-Updated: 2026-08-06. Dogfood-tested this session; 3 real gaps found and fixed
-(detail in `HANDOFF-COMPLETED.md`). Package still not reviewed by a second pass.
+Updated: 2026-08-06. Dogfood-tested and the Stop-hook staleness-nudge is built and
+verified (detail in `HANDOFF-COMPLETED.md`). Package still not reviewed by a second
+pass.
 
 ## Start here
 
@@ -11,27 +12,32 @@ Read `CLAUDE.md`, then this file, then run `git log --oneline -8` and
 ## Current state
 
 Repo initialized and pushed to `github.com/TySnyder/claude-handoff` (public). Content
-written and dogfood-verified (detail in `HANDOFF-COMPLETED.md`):
+written and dogfood-verified, including the new Stop-hook feature (detail in
+`HANDOFF-COMPLETED.md`):
 
 - `README.md`, `docs/PROTOCOL.md`, `templates/CLAUDE-md-snippet.md`,
   `templates/HANDOFF.md` / `templates/HANDOFF-COMPLETED.md`,
-  `skills/summarize/SKILL.md`.
+  `skills/summarize/SKILL.md`, `templates/hooks/check-handoff-staleness.sh`,
+  `templates/settings.json-snippet.json`.
 
-**Not done yet:** no `.claude/settings.json` hook template (the "staleness nudge"
-idea — a Stop hook that flags when `HANDOFF.md` is older than the newest changed
-file — was floated as a real differentiator but never built, here or in the source
-project). No example/worked walkthrough beyond the README's three bug examples.
+**Not done yet:** the Stop-hook is installed into this repo's own
+`.claude/settings.json` but not yet confirmed *live* here (settings watcher may not
+be watching `.claude/` yet — needs a `/hooks` open or restart, see
+`HANDOFF-COMPLETED.md`). No example/worked walkthrough beyond the README's three bug
+examples. Package has never had a second-pass review.
 
 ## Open decisions
 
-- Whether to build the Stop-hook staleness-nudge as a real feature of this package
-  (it would be a genuine differentiator vs. the passive "memory bank" pattern this
-  competes with) — floated, not decided.
+None currently open.
 
 ## Next steps
 
-1. Decide on and possibly build the Stop-hook staleness-nudge (`.claude/settings.json`
-   template + short doc in `docs/PROTOCOL.md`).
+1. Open `/hooks` (or restart) in this repo to confirm the settings watcher picks up
+   the newly-created `.claude/settings.json`, then trigger a real Stop with
+   uncommitted changes to confirm the hook fires live, not just in the throwaway-repo
+   test.
+2. Consider a second-pass review of the whole package (README, docs/PROTOCOL.md,
+   templates) now that both the core protocol and the hook have been dogfood-tested.
 
 ---
 

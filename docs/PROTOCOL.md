@@ -96,6 +96,35 @@ The goal is that `HANDOFF.md` is never more than one meaningful step behind real
 because there is no reliable signal for "the user is about to close this for a week,"
 the discipline has to be continuous, not triggered by an explicit goodbye.
 
+## The staleness-nudge hook (optional)
+
+The rules above rely on discipline — an agent choosing to update `HANDOFF.md` before
+stopping. `templates/hooks/check-handoff-staleness.sh`, wired up via a `Stop` hook in
+`.claude/settings.json`, backstops that discipline mechanically instead of trusting it.
+
+**What it does:** on every session Stop, it checks whether any git-tracked file
+(other than the handoff files themselves) has uncommitted changes newer than
+`HANDOFF.md`'s own mtime. If so, it blocks the stop and feeds the model a reason to
+consider updating `HANDOFF.md` before actually ending the turn. If nothing changed, or
+`HANDOFF.md` is already current, it's silent.
+
+**Why this shape:**
+
+- **Fails open.** No `jq`, not a git repo, no `HANDOFF.md` yet — it exits 0 immediately
+  rather than blocking anything.
+- **Fires once, not forever.** It respects the `stop_hook_active` flag Claude Code sets
+  when a Stop hook has already blocked once this turn, so a model that decides the
+  drift is a false positive can still stop on the next attempt instead of looping.
+- **Signal, not verdict.** The reason text explicitly tells the model a false positive
+  is fine to dismiss — the hook can see that files changed, not whether that change was
+  worth documenting.
+
+**Install:** copy `templates/hooks/check-handoff-staleness.sh` to
+`.claude/hooks/check-handoff-staleness.sh` in your project, then merge
+`templates/settings.json-snippet.json`'s `hooks.Stop` block into your
+`.claude/settings.json` (merge, don't overwrite — see that file if you already have
+other hooks configured).
+
 ## What this protocol does not do
 
 It is not a linter, a test suite, or a substitute for git history. It does not catch

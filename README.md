@@ -77,6 +77,10 @@ See [`docs/PROTOCOL.md`](docs/PROTOCOL.md) for the full rule set.
 
    (use `.claude/skills/summarize/` instead of `~/.claude/skills/` for a project-local
    install)
+4. Optionally install the staleness-nudge hook — a `Stop` hook that flags when
+   `HANDOFF.md` looks older than real, uncommitted work in the repo. See
+   ["The staleness-nudge hook"](docs/PROTOCOL.md#the-staleness-nudge-hook-optional) in
+   `docs/PROTOCOL.md` for what it does and the install steps.
 
 ## Stack
 
