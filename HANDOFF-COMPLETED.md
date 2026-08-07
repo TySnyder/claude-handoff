@@ -1,5 +1,43 @@
 # claude-handoff — Completed Work Archive
 
+## 2026-08-07 — Prepended the story opener to the live Reddit post body
+
+Owner wanted the "My AI coding agent said nothing had changed..." line (the would-be
+retitle, from the abandoned delete-and-repost) injected as the post body's opening
+paragraph instead, since the title itself can't be changed. Applied via
+`/api/editusertext` (fresh modhash pulled each time). Caught and fixed a small
+redundancy on the first pass — paragraph 2 originally re-listed the same "nothing's
+changed" example the new opener already told; owner said smooth it if needed without
+changing much, so reworded that one transition sentence to reference back ("That
+'nothing's changed' claim above was one of three...") instead of repeating it, then
+re-applied. Verified twice via fresh page reloads — final body confirmed clean, no
+duplication, 2336 characters.
+
+## 2026-08-07 — Delete-and-repost reversed; README rebuilt around the story; API path abandoned again
+
+- **Delete-and-repost decision reversed.** Owner had decided to delete the live
+  r/ClaudeCode post for a clearer title. Before executing, checked the post fresh and
+  found it had picked up 2 substantive comments since the last check (real technical
+  engagement — one dissecting why "structural claims" age better than "state claims"
+  in a handoff doc, another proposing a "Driver/Scribe" two-session pattern as an
+  extension of the idea). Flagged this before deleting anything: the post was clearly
+  reaching the right people despite the "esoteric" title concern, and deleting would
+  destroy real discussion for a title tweak. Owner agreed, kept the post as-is.
+- **README rebuilt around the concrete story.** Owner asked to lead with the same
+  story used for the (unused) new Reddit title — "my AI agent said nothing had
+  changed, while a feature was already merged and live" — rather than an abstract
+  description, then explain the detection mechanism plainly in the second paragraph
+  since the owner didn't understand it from the prior wording. Rewrote both
+  paragraphs; noted (not yet fixed, owner deprioritized it to focus on the Reddit
+  post) that paragraph 2 now overlaps slightly with "The problem this solves"
+  section's closing paragraph, which restates the same verification rule.
+  **Uncommitted.**
+- **Reddit API credential path abandoned a second time.** Owner completed some
+  additional Reddit signup/registration step and re-attempted the script-app
+  creation flow (asked for the redirect URI again — still `http://localhost:8080`).
+  Didn't work. Owner dropped it again and asked to focus on editing the live post's
+  body instead — content not yet specified, waiting on the owner.
+
 ## 2026-08-07 — Reddit API dead end, scheduling pivot, README rewritten twice more
 
 - **Reddit API credential path abandoned.** Owner wanted true unattended scheduled

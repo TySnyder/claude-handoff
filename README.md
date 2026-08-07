@@ -1,11 +1,16 @@
 # claude-handoff
 
-claude-handoff keeps your project on track while saving you tokens. Built for Claude
-Code (or any AI coding agent), it keeps your agent from losing the thread of your
-project between sessions — avoiding costly auto-compaction and nudging you when it's
-actually a good time to start a fresh chat window, so your agent stays up to speed
-without missing a beat. As a bonus, it also catches your agent when it confidently
-repeats something that's no longer true.
+My AI coding agent once told me nothing had changed — while a whole feature sat
+merged and already live. It wasn't lying; it was reading an old handoff doc and
+trusting it, the same way I would have. So I built claude-handoff: a tool that
+catches that before it happens again, and saves you tokens along the way.
+
+Here's how it catches it: every project gets a `HANDOFF.md`, a short running note on
+where things stand. Any claim in it that's bold, load-bearing, or more than about a
+week old — a "this is fixed," "this is still broken," "nothing's changed" — gets
+checked against git and the actual code before a new session repeats it, instead of
+just being read and passed along as fact. Docs describe intent; git describes
+reality. When they disagree, git wins.
 
 ## The problem this solves
 
@@ -17,9 +22,8 @@ unpredictable. The common workarounds all fail the same way eventually:
 - **Keep an ad-hoc notes file** — grows without bound until it's too long to be worth
   reading, which defeats the point of having it.
 
-`claude-handoff` is a director-plus-archive pattern that avoids all three, built
-around one hard-won rule most versions of this idea skip: **a written claim about
-project state is only as good as the last time someone checked it against reality.**
+`claude-handoff` is a director-plus-archive pattern that avoids all three — the
+verification rule above is the part most versions of this idea skip entirely.
 
 **Not a one-shot handoff snapshot.** Several tools compact *the current conversation*
 into a summary for the next agent at the moment you end a session. This is a
