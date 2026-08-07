@@ -67,9 +67,16 @@ See [`docs/PROTOCOL.md`](docs/PROTOCOL.md) for the full rule set.
 2. Paste [`templates/CLAUDE-md-snippet.md`](templates/CLAUDE-md-snippet.md) into your
    project's (or global) `CLAUDE.md`.
 3. Optionally install [`skills/summarize/SKILL.md`](skills/summarize/SKILL.md) as a
-   Claude Code skill (`~/.claude/skills/summarize/` or `.claude/skills/summarize/`) —
-   it mechanizes the director/archive rotation and the closing block so you don't have
-   to re-derive the rules from prose every session.
+   Claude Code skill — it mechanizes the director/archive rotation and the closing
+   block so you don't have to re-derive the rules from prose every session:
+
+   ```sh
+   mkdir -p ~/.claude/skills/summarize
+   cp skills/summarize/SKILL.md ~/.claude/skills/summarize/SKILL.md
+   ```
+
+   (use `.claude/skills/summarize/` instead of `~/.claude/skills/` for a project-local
+   install)
 
 ## Stack
 

@@ -1,7 +1,7 @@
 # claude-handoff — Handoff Director
 
-Updated: 2026-08-06 (first session). Package scaffolded and populated with a first
-real draft — not yet reviewed by a second pass or tried on a genuinely fresh project.
+Updated: 2026-08-06. Dogfood-tested this session; 3 real gaps found and fixed
+(detail in `HANDOFF-COMPLETED.md`). Package still not reviewed by a second pass.
 
 ## Start here
 
@@ -11,24 +11,16 @@ Read `CLAUDE.md`, then this file, then run `git log --oneline -8` and
 ## Current state
 
 Repo initialized and pushed to `github.com/TySnyder/claude-handoff` (public). Content
-written this session, all real (ported from the source project, not invented):
+written and dogfood-verified (detail in `HANDOFF-COMPLETED.md`):
 
-- `README.md` — pitch, the three real bug examples, install instructions.
-- `docs/PROTOCOL.md` — the canonical spec (director/archive, the stale-claim rule,
-  the closing block, when to update).
-- `templates/CLAUDE-md-snippet.md` — the pasteable protocol block, generalized (no
-  references to the source project or its owner).
-- `templates/HANDOFF.md` / `templates/HANDOFF-COMPLETED.md` — blank starters with
-  `{{TOKEN}}` placeholders, matching `fresh-project`'s own templating convention.
-- `skills/summarize/SKILL.md` — the mechanized version of the rotation, generalized
-  from the fixed skill in the source project.
+- `README.md`, `docs/PROTOCOL.md`, `templates/CLAUDE-md-snippet.md`,
+  `templates/HANDOFF.md` / `templates/HANDOFF-COMPLETED.md`,
+  `skills/summarize/SKILL.md`.
 
 **Not done yet:** no `.claude/settings.json` hook template (the "staleness nudge"
 idea — a Stop hook that flags when `HANDOFF.md` is older than the newest changed
 file — was floated as a real differentiator but never built, here or in the source
-project). No example/worked walkthrough beyond the README's three bug examples. Never
-installed into a genuinely fresh project to confirm the templates actually work when
-followed literally, rather than just read.
+project). No example/worked walkthrough beyond the README's three bug examples.
 
 ## Open decisions
 
@@ -40,9 +32,6 @@ followed literally, rather than just read.
 
 1. Decide on and possibly build the Stop-hook staleness-nudge (`.claude/settings.json`
    template + short doc in `docs/PROTOCOL.md`).
-2. Dogfood-test: install `templates/` + `skills/summarize/` into one genuinely new,
-   unrelated project and confirm the instructions are followable without this
-   session's context filling in gaps.
 
 ---
 

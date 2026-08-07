@@ -21,9 +21,11 @@ OUT to `HANDOFF-COMPLETED.md`; it never just accumulates at the top of `HANDOFF.
 
 ```bash
 cat <repo>/HANDOFF.md 2>/dev/null
+cat <repo>/CLAUDE.md 2>/dev/null | head -40   # project-specific overrides to this protocol, if any
 git -C <repo> log --oneline -5
 git -C <repo> status --short
 wc -l <repo>/HANDOFF.md
+ls <repo>/HANDOFF-*.md 2>/dev/null            # excluding HANDOFF-COMPLETED.md: phase-index in use?
 ```
 
 If `HANDOFF.md` is already an index pointing at `HANDOFF-1.md`/`HANDOFF-2.md` etc.
@@ -38,8 +40,15 @@ progress," not "next steps") gets cut **verbatim** and moved to the TOP of
 title (commit sha)`. Leave at most a one-line pointer behind in `HANDOFF.md`
 ("detail in `HANDOFF-COMPLETED.md`").
 
-If `HANDOFF-COMPLETED.md` doesn't exist yet, create it with a one-line header
-explaining it's a newest-first archive, searched by `rg`, never read wholesale.
+If `HANDOFF-COMPLETED.md` doesn't exist yet, create it with this header:
+
+```markdown
+# <Project> — Completed Work Archive
+
+Newest first. Entries move here verbatim from `HANDOFF.md` as each slice or task
+finishes. Never read this file wholesale — search it (`rg "<term>" HANDOFF-COMPLETED.md`)
+when a specific past diagnosis is needed.
+```
 
 ### 4. Synthesize what changed THIS session
 

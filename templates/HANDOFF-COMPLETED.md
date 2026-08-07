@@ -6,7 +6,7 @@ when a specific past diagnosis is needed.
 
 ---
 
-## {{DATE}} — Project started
+## {{DATE}} — Project started ({{COMMIT_SHA}})
 
 {{First real entry goes here once the first slice of work is actually done. Delete
 this placeholder line.}}
