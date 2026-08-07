@@ -1,5 +1,47 @@
 # claude-handoff — Completed Work Archive
 
+## 2026-08-06 — Stop-hook confirmed live, second-pass fixes, new `handoff-install` skill
+
+- Stop-hook script logic re-verified in an isolated scratch repo (clean-tree no-op,
+  stale-vs-`HANDOFF.md` block with correct reason, `stop_hook_active` loop guard) —
+  all behave as coded.
+- **Live end-to-end proof landed for real, unplanned:** mid-session, with real
+  uncommitted changes to this repo, Claude Code's own Stop event fired the hook and
+  blocked with the exact reason text — confirms the previously-open "does Claude Code
+  actually invoke this live here" question. Not manufactured; happened naturally.
+- Second-pass review found and fixed 2 real gaps:
+  - `docs/PROTOCOL.md`'s hook-install step pointed at
+    `templates/settings.json-snippet.json` for merge guidance that bare JSON can't
+    hold (no comments) — rewrote the guidance inline in `PROTOCOL.md`.
+  - `HANDOFF.md`'s own closing block referenced a "Stop-hook idea" open decision the
+    `Open decisions` section already (correctly) listed as none — stale
+    self-contradiction, removed.
+- Built `skills/handoff-install/SKILL.md` — one-step, self-contained installer skill
+  (no need to clone this repo). Embeds all templates + hook script + settings block
+  directly; gathers real values (project name, date, commit sha, an inferred
+  current-state sentence) instead of leaving placeholders; checks for and skips
+  already-installed pieces (idempotent); asks before installing the optional
+  Stop-hook. Dogfood-tested in a throwaway scratch project (`widget-tracker`):
+  confirmed real-value substitution, valid JSON output, the hook firing correctly
+  end-to-end (including the expected first-Stop false positive right after install,
+  before anything's committed — matches the hook's own "false positive, fine to
+  dismiss" design), and all 3 re-run/idempotency checks.
+- `README.md` rewritten to lead installs with `/handoff-install`; the old 4-step
+  manual process kept below as a fallback for people who want to see exactly what
+  gets written.
+- Researched a naming/functionality question the owner raised ahead of a planned
+  Reddit/skills-repo post: `github.com/mattpocock/skills` has skills named `handoff`
+  and `claude-handoff` (exact string match on this project's name). Read both
+  `SKILL.md`s directly via `gh api` (no code executed). Confirmed no runtime
+  slash-command collision (his are `/handoff` / `/claude-handoff`; ours are
+  `/summarize` / `/handoff-install`), but flagged real conceptual overlap: his tools
+  compact *the current conversation* into a one-shot snapshot (saved to temp dir, or
+  spawn a `claude --bg` agent) at the moment a session ends; this project is a
+  persistent, continuously-rewritten director+archive pair checked into the repo with
+  an explicit stale-claim verification rule. Added a "Not a one-shot handoff
+  snapshot" paragraph to `README.md` right after the intro to make the distinction
+  explicit for readers.
+
 ## 2026-08-06 — Built and verified the Stop-hook staleness-nudge
 
 Owner decision: yes, build it (had been an open decision blocking work). Built:

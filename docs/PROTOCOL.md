@@ -122,8 +122,10 @@ consider updating `HANDOFF.md` before actually ending the turn. If nothing chang
 **Install:** copy `templates/hooks/check-handoff-staleness.sh` to
 `.claude/hooks/check-handoff-staleness.sh` in your project, then merge
 `templates/settings.json-snippet.json`'s `hooks.Stop` block into your
-`.claude/settings.json` (merge, don't overwrite — see that file if you already have
-other hooks configured).
+`.claude/settings.json`. If you already have other `Stop` hooks configured, don't
+overwrite them — append this command's object to the existing `hooks.Stop[0].hooks`
+array instead (JSON has no comments, so this file can't carry that instruction
+itself).
 
 ## What this protocol does not do
 

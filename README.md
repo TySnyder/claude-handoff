@@ -17,6 +17,12 @@ unpredictable. The common workarounds all fail the same way eventually:
 around one hard-won rule most versions of this idea skip: **a written claim about
 project state is only as good as the last time someone checked it against reality.**
 
+**Not a one-shot handoff snapshot.** Several tools compact *the current conversation*
+into a summary for the next agent at the moment you end a session. This is a
+different, longer-lived thing: two files checked into the repo, rewritten
+continuously across weeks of sessions, with an explicit rule for catching stale
+claims before they get repeated — not a snapshot taken once and left to rot.
+
 ## What it actually catches
 
 This isn't a linter or a test suite — it doesn't catch code bugs. It catches
@@ -60,6 +66,28 @@ Two files at the project root, plus a rule for how they're maintained:
 See [`docs/PROTOCOL.md`](docs/PROTOCOL.md) for the full rule set.
 
 ## Installing this in a project
+
+**One step:** install [`skills/handoff-install/SKILL.md`](skills/handoff-install/SKILL.md)
+as a Claude Code skill, then run it in your project:
+
+```sh
+mkdir -p ~/.claude/skills/handoff-install
+cp skills/handoff-install/SKILL.md ~/.claude/skills/handoff-install/SKILL.md
+```
+
+(use `.claude/skills/handoff-install/` instead of `~/.claude/skills/` for a
+project-local install)
+
+Then say `/handoff-install` (or just ask for it in plain language) in the target
+project. It's self-contained — the skill carries every template it writes, so the
+target project doesn't need this repo cloned. It writes `HANDOFF.md` and
+`HANDOFF-COMPLETED.md` with real values (project name, date, an inferred current-state
+summary — not placeholders), appends the `CLAUDE.md` protocol block, and asks before
+also installing the optional staleness-nudge `Stop` hook. It won't overwrite anything
+that's already installed.
+
+**Manual install**, if you'd rather do it by hand or just see exactly what gets
+written:
 
 1. Copy [`templates/HANDOFF.md`](templates/HANDOFF.md) and
    [`templates/HANDOFF-COMPLETED.md`](templates/HANDOFF-COMPLETED.md) into your
