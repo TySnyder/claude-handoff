@@ -1,0 +1,16 @@
+# Operating system
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Claude Code local-only config
+.claude/settings.local.json
+.claude/*.local.md
+
+# Never ignore workflow or product files:
+# HANDOFF*.md, CLAUDE.md, and templates/ are all tracked on purpose.
