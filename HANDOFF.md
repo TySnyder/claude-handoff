@@ -1,9 +1,10 @@
 # claude-handoff — Handoff Director
 
 Updated: 2026-08-07 (end of session). Two notify-only reminder routines created and
-live. README's closing-block bullet strengthened, committed and pushed (`eb124f0`).
-r/ClaudeCode post is live and final. Reddit API credential path abandoned twice.
-Detail in `HANDOFF-COMPLETED.md`.
+live. README's closing-block bullet strengthened; the closing-block spec now
+explicitly requires fencing (was example-only, drifted in practice). All committed
+and pushed through `ff34af4`. r/ClaudeCode post is live and final. Reddit API
+credential path abandoned twice. Detail in `HANDOFF-COMPLETED.md`.
 
 ## Start here
 
@@ -28,6 +29,14 @@ with the owner via browser automation, same as the r/ClaudeCode post.
 under "The pattern" was strengthened per owner feedback (it already existed in
 `docs/PROTOCOL.md` and `templates/CLAUDE-md-snippet.md` too — owner wanted it framed
 as more of a differentiator, not added from scratch). 143 lines, within budget.
+
+**Closing-block fencing rule made explicit (`ff34af4`), also applied to global
+`~/.claude/CLAUDE.md`.** The rule that the "Start the new window with" block must be
+a literal fenced code block in chat output was previously conveyed only by example
+formatting; it drifted (chat output started mirroring `HANDOFF.md`'s own heading
+style instead of fencing). Now stated explicitly in `docs/PROTOCOL.md`, in
+`templates/CLAUDE-md-snippet.md`, and in the owner's global CLAUDE.md (outside this
+repo, governs actual behavior across all projects).
 
 **r/ClaudeCode post: final, do not touch.** Live with the story-opener body edit
 applied. 2 substantive comments — reply only, don't delete/repost.
