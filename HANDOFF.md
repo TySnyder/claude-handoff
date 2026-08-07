@@ -1,8 +1,9 @@
 # claude-handoff — Handoff Director
 
-Updated: 2026-08-07. Two notify-only reminder routines created. README's closing-block
-bullet strengthened. r/ClaudeCode post is live and final. Reddit API credential path
-abandoned twice. Detail in `HANDOFF-COMPLETED.md`.
+Updated: 2026-08-07 (end of session). Two notify-only reminder routines created and
+live. README's closing-block bullet strengthened, committed and pushed (`eb124f0`).
+r/ClaudeCode post is live and final. Reddit API credential path abandoned twice.
+Detail in `HANDOFF-COMPLETED.md`.
 
 ## Start here
 
@@ -23,7 +24,7 @@ earlier `env_01493wyDbAi3zfXPF89TFWUA` no longer exists, don't reuse it):
 Both are notify-only by design — cannot post themselves; actual posting happens live
 with the owner via browser automation, same as the r/ClaudeCode post.
 
-**README.md: edited this session, not yet committed.** The "closing block" bullet
+**README.md: final, committed and pushed (`eb124f0`).** The "closing block" bullet
 under "The pattern" was strengthened per owner feedback (it already existed in
 `docs/PROTOCOL.md` and `templates/CLAUDE-md-snippet.md` too — owner wanted it framed
 as more of a differentiator, not added from scratch). 143 lines, within budget.
@@ -43,13 +44,11 @@ explicitly deferred, not started.
 
 ## Next steps
 
-1. **Commit the README.md change** (git diff is uncommitted right now — see
-   `git status`).
-2. Finish the adversarial second-pass review of `README.md` and `templates/` for
+1. Finish the adversarial second-pass review of `README.md` and `templates/` for
    their own standalone issues — flagged across multiple sessions now, still hasn't
    happened.
-3. Monitor the r/ClaudeCode post's 2 comments for replies worth engaging with.
-4. When the reminder routines fire (8/8, 8/10), actually post — the routines only
+2. Monitor the r/ClaudeCode post's 2 comments for replies worth engaging with.
+3. When the reminder routines fire (8/8, 8/10), actually post — the routines only
    notify.
 
 ---
@@ -62,6 +61,9 @@ Keep this file under 150 lines.
 Read `CLAUDE.md` and `HANDOFF.md` in `/Users/ts/github-sites/claude-handoff` in full,
 then run `git log --oneline -8` and `git status --short` to confirm the repo matches
 this file's claims (per this project's own stale-claim rule). Nothing is broken or
-mid-edit — the only real thread is open decision #1 (Show HN date): ask the owner for
-it, then set up the two notification-only routines per Next steps #1. Don't attempt
-Reddit API posting automation again unless the owner explicitly raises it fresh.
+mid-edit, working tree should be clean at `eb124f0`. No open decisions remain — the
+two reminder routines are live (trig_01UtAbe1SLzZRB5MJk6K1hnj, trig_017XajQLw2awbrPmvMYrfmNJ)
+and don't need touching until they fire. The next real thread is Next steps #1: the
+adversarial second-pass review of `README.md` and `templates/`, flagged repeatedly but
+never done. Don't attempt Reddit API posting automation again unless the owner
+explicitly raises it fresh.
