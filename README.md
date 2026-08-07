@@ -23,6 +23,11 @@ different, longer-lived thing: two files checked into the repo, rewritten
 continuously across weeks of sessions, with an explicit rule for catching stale
 claims before they get repeated — not a snapshot taken once and left to rot.
 
+**It also keeps token usage down.** Reading a 150-line `HANDOFF.md` on a fresh session
+costs a fraction of what re-explaining context — or riding one session out into
+auto-compaction — costs. That's what makes starting a new chat window a deliberate,
+cheap choice instead of something you're forced into once a session gets unwieldy.
+
 ## What it actually catches
 
 This isn't a linter or a test suite — it doesn't catch code bugs. It catches

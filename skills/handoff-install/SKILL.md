@@ -156,9 +156,9 @@ Create `CLAUDE.md` at the root if it doesn't exist. Append this block verbatim
 ### 7. Ask about the optional Stop-hook
 
 Ask the user one question: install the Stop-hook staleness nudge? (It flags when
-`HANDOFF.md` looks older than real uncommitted work in the repo, at session end. Needs
-`jq` and git; fails open — silent no-op — if either is missing.) If they decline, skip
-to step 9.
+`HANDOFF.md` looks older than real uncommitted work in the repo, at session end, and
+plays a sound on macOS when it fires. Needs `jq` and git; fails open — silent no-op —
+if either is missing.) If they decline, skip to step 9.
 
 ### 8. Install the Stop-hook (only if step 7 was a yes)
 
@@ -173,6 +173,8 @@ with this exact content, then `chmod +x` it:
 #
 # Fires once per Stop (guarded by stop_hook_active) so it can't loop forever.
 # Fails open on anything unexpected (no jq, not a git repo, no HANDOFF.md).
+# Plays a sound on macOS when it fires, so the nudge doesn't rely on watching the
+# terminal; silently skipped on any other platform or if afplay is unavailable.
 
 command -v jq >/dev/null 2>&1 || exit 0
 
@@ -199,6 +201,7 @@ while IFS= read -r f; do
 done <<< "$changed"
 
 if [ "${newest:-0}" -gt "${handoff_mtime:-0}" ]; then
+  command -v afplay >/dev/null 2>&1 && afplay /System/Library/Sounds/Glass.aiff >/dev/null 2>&1 &
   reason="HANDOFF.md looks stale: other tracked files changed more recently than it was last updated. If real progress happened this session, update HANDOFF.md's Current state / Next steps before stopping. If there's nothing worth recording yet, this is a false positive — go ahead and stop."
   jq -n --arg reason "$reason" '{decision: "block", reason: $reason}'
 fi

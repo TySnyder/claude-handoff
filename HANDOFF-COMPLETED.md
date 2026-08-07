@@ -1,5 +1,30 @@
 # claude-handoff — Completed Work Archive
 
+## 2026-08-07 — Real sound-notification feature + README token-efficiency framing
+
+- Owner asked to highlight token-efficiency in the marketing copy — a real,
+  previously-unstated benefit: a bounded `HANDOFF.md` costs far fewer tokens to read
+  cold than re-explaining context or riding a session into auto-compaction, which is
+  what actually makes switching chat windows a deliberate choice. Added to
+  `README.md` as its own callout, then reframed as a question per owner feedback
+  ("make it sound better").
+- Owner separately asked to claim the tool "makes a sound to notify the user when
+  handoff happens." Checked first — that claim was **false**: the `afplay` sound only
+  exists in the owner's personal global `~/.claude/CLAUDE.md`, and was explicitly
+  excluded from the generalized package (documented earlier in this same archive:
+  "rightly generalized away"). Refused to post a false capability claim about a tool
+  whose entire pitch is catching false claims. Owner chose to build it for real
+  instead.
+- Built it for real: the Stop-hook (`templates/hooks/`, `.claude/hooks/`, and the
+  copy embedded in `skills/handoff-install/SKILL.md` — all three kept in sync) now
+  runs `afplay /System/Library/Sounds/Glass.aiff` in the background at the exact
+  moment it fires the staleness block, gated behind `command -v afplay` so it's a
+  silent no-op on non-macOS, matching the script's existing fail-open philosophy.
+  Documented in `docs/PROTOCOL.md` (what it does + why-this-shape bullet) and in the
+  `handoff-install` skill's step 7 question text. Tested live in this repo's own real
+  (not scratch) uncommitted state: hook still emits valid `decision:block` JSON, and
+  `afplay` exits 0 with the real system sound file.
+
 ## 2026-08-07 — Launched: GitHub polish + live Reddit post in r/ClaudeCode
 
 - Added 6 discovery topics to the GitHub repo (`claude-code`, `ai-agents`,

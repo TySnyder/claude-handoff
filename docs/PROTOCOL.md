@@ -105,8 +105,9 @@ stopping. `templates/hooks/check-handoff-staleness.sh`, wired up via a `Stop` ho
 **What it does:** on every session Stop, it checks whether any git-tracked file
 (other than the handoff files themselves) has uncommitted changes newer than
 `HANDOFF.md`'s own mtime. If so, it blocks the stop and feeds the model a reason to
-consider updating `HANDOFF.md` before actually ending the turn. If nothing changed, or
-`HANDOFF.md` is already current, it's silent.
+consider updating `HANDOFF.md` before actually ending the turn — and plays a system
+sound on macOS at the same moment, so the nudge doesn't depend on you watching the
+terminal. If nothing changed, or `HANDOFF.md` is already current, it's silent.
 
 **Why this shape:**
 
@@ -118,6 +119,9 @@ consider updating `HANDOFF.md` before actually ending the turn. If nothing chang
 - **Signal, not verdict.** The reason text explicitly tells the model a false positive
   is fine to dismiss — the hook can see that files changed, not whether that change was
   worth documenting.
+- **Sound degrades gracefully.** The `afplay` call only runs on macOS with the binary
+  present; anywhere else it's a silent no-op, same fail-open philosophy as the rest of
+  the script.
 
 **Install:** copy `templates/hooks/check-handoff-staleness.sh` to
 `.claude/hooks/check-handoff-staleness.sh` in your project, then merge
