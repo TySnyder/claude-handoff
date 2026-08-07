@@ -1,8 +1,8 @@
 # claude-handoff — Handoff Director
 
-Updated: 2026-08-06. Stop-hook confirmed live (fired for real this session). New
-`skills/handoff-install/SKILL.md` built and dogfood-tested in a scratch project
-(detail in `HANDOFF-COMPLETED.md`). Not yet committed.
+Updated: 2026-08-06. `handoff-install` is security-hardened, adversarially tested, and
+verified via a real `Skill`-tool invocation. Go-to-market plan delivered (published
+Artifact). Detail in `HANDOFF-COMPLETED.md`.
 
 ## Start here
 
@@ -11,32 +11,31 @@ Read `CLAUDE.md`, then this file, then run `git log --oneline -8` and
 
 ## Current state
 
-Repo pushed to `github.com/TySnyder/claude-handoff` (public). Uncommitted right now:
-`HANDOFF.md`, `README.md`, `docs/PROTOCOL.md` (modified), `skills/handoff-install/`
-(new, untracked). Everything else — `docs/PROTOCOL.md`'s core spec,
-`templates/CLAUDE-md-snippet.md`, `templates/HANDOFF.md` /
-`templates/HANDOFF-COMPLETED.md`, `skills/summarize/SKILL.md`, the Stop-hook script +
-settings snippet — already committed and dogfood-verified.
-
-`skills/handoff-install/SKILL.md` has only been *simulated by hand* (walked through
-its own instructions against a throwaway scratch repo) — it has never actually been
-installed as a real Claude Code skill and invoked via `/handoff-install`.
+Everything is built, dogfood-tested, security-tested, and (as of this session)
+`skills/handoff-install/SKILL.md` is installed for real at
+`~/.claude/skills/handoff-install/` — confirmed live via an actual `/handoff-install`
+invocation, not just simulation. Nothing is publicly announced yet; that's a pending
+owner decision, not a build task.
 
 ## Open decisions
 
-None currently open.
+1. **Publish timing/channel.** The go-to-market plan (Artifact from this session —
+   ask the user for the link if it's not visible in this chat) drafts a Reddit post
+   and a Show HN post and recommends not posting both same-day. Owner needs to decide
+   when to actually post, not Claude.
+2. Whether the "hosted dashboard on top of this" idea (the one plausible profitable
+   pivot identified) is worth scoping as a separate project — explicitly deferred,
+   not started.
 
 ## Next steps
 
-1. Commit this session's changes (`HANDOFF.md`, `README.md`, `docs/PROTOCOL.md`,
-   `skills/handoff-install/`), then push.
-2. Before publishing: actually install `skills/handoff-install/SKILL.md` as a real
-   skill (`~/.claude/skills/handoff-install/` or project-local) and run
-   `/handoff-install` for real against a throwaway project — the hand-simulation was
-   thorough but isn't the same as the real skill-invocation path.
-3. Finish the adversarial second-pass review: `README.md` (materially changed this
-   session) and the `templates/` tree still haven't been re-read specifically hunting
-   for their own standalone issues, only checked for consistency so far.
+1. Owner reviews the go-to-market plan artifact and decides go/no-go + timing on
+   posting.
+2. Finish the adversarial second-pass review of `README.md` and the `templates/`
+   tree specifically for their own standalone issues (still hasn't happened — only
+   cross-file consistency has been checked so far, across two prior sessions).
+3. Commit `skills/handoff-install/SKILL.md`'s security-hardening edit (currently
+   uncommitted — see `git status`).
 
 ---
 
@@ -47,6 +46,6 @@ Keep this file under 150 lines.
 
 Read `CLAUDE.md` and `HANDOFF.md` in `/Users/ts/github-sites/claude-handoff` in full,
 then run `git log --oneline -8` and `git status --short` to confirm the repo matches
-this file's claims (per this project's own stale-claim rule — don't just trust this
-paragraph). No decision is blocking; pick up at "Next steps" above — likely starting
-with committing the uncommitted work.
+this file's claims (per this project's own stale-claim rule). No decision is
+blocking Claude specifically, but open decision #1 above needs the owner's input
+before any public post goes out — don't post on their behalf. Pick up at "Next steps."
