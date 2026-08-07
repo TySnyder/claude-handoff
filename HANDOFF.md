@@ -1,9 +1,9 @@
 # claude-handoff — Handoff Director
 
-Updated: 2026-08-07 (very late session, still going). r/ClaudeCode post stays as-is —
-delete-and-repost was reversed after finding real comments already on it. README
-rebuilt around a concrete story opener (uncommitted). Reddit API credentials
-abandoned a second time. Detail in `HANDOFF-COMPLETED.md`.
+Updated: 2026-08-07 (very late session, still going). README opener is finally
+confirmed final by the owner after several rounds — about to commit. r/ClaudeCode
+post stays as-is. Reddit API credentials abandoned a second time. Detail in
+`HANDOFF-COMPLETED.md`.
 
 ## Start here
 
@@ -16,11 +16,12 @@ Read `CLAUDE.md`, then this file, then run `git log --oneline -8` and
 do not delete or repost it. If anything, it's a candidate for replying to those
 comments, not editing.
 
-**README.md — approved and committed this session.** Opening two paragraphs lead
-with the concrete story (mirrors the Reddit post's opening line) and then explain the
-stale-claim detection mechanism plainly. The paragraph-2/"problem this solves"
-redundancy is fixed — the latter no longer restates the rule, just names the
-director-plus-archive pattern and points back to it.
+**README.md — final wording confirmed by owner, about to commit.** Went through
+several rounds tonight: story hook → owner's own draft merged in → dropped-content
+regression caught and fixed → owner asked for their exact verbatim wording → owner
+then said they preferred the paraphrased version after all → confirmed that as final
+("that right there is it"). Current file state IS the confirmed version — commit it
+as soon as this file is saved, don't re-litigate the wording again.
 
 **Reddit post body edit — done.** Prepended the "My AI coding agent said nothing had
 changed..." line as the body's opening paragraph, smoothed the one transition

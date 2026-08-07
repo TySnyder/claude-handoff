@@ -1,5 +1,36 @@
 # claude-handoff — Completed Work Archive
 
+## 2026-08-07 — README opener settled after several rounds of verbatim-vs-paraphrase
+
+After the regression fix (see next entry down), owner pasted their original draft
+again verbatim and said I'd "changed it slightly" the first time — asked to use
+their exact wording this round. Applied verbatim. Owner then said they actually
+preferred the paraphrased version after all ("i like your version of it") — reverted
+back to it. Owner confirmed that version as final ("that right there is it"). Net
+result: same paraphrased paragraph structure as the regression-fix entry below,
+now explicitly confirmed as the intended final wording, not just a fallback. **Ready
+to commit.**
+
+## 2026-08-07 — Reddit-edit visibility scare; caught a real content regression
+
+- **Owner reported the Reddit post "still looks the same"** despite hard-refreshing
+  phone and laptop. Re-verified directly rather than assuming it was fine: navigated
+  fresh to both `old.reddit.com` and `www.reddit.com` (the standard UI, not just the
+  one used to make the edit) and screenshotted the actual rendered page — the edit is
+  genuinely live and correct on both. Likely explanation handed to the owner: Reddit
+  CDN edge caching or the mobile app not doing a real refetch on pull-to-refresh,
+  neither of which a local hard-refresh fixes. Suggested an incognito-window check to
+  isolate it. Didn't just reassure without checking — re-verified from scratch.
+- **Caught a real regression the owner flagged, not me.** When the README opener got
+  replaced with the concrete story, the token-savings and auto-compaction points from
+  the owner's original draft silently dropped out — no longer anywhere in the opening
+  paragraph. Owner caught it ("nothing about saving token, and avoiding compaction")
+  and pointed out the irony directly: this is exactly the class of silently-dropped,
+  unverified regression claude-handoff exists to catch, happening in claude-handoff's
+  own README mid-session. Fixed by folding both points explicitly back into paragraph
+  1 alongside the story, rather than leaving them only implied further down in "Cheap
+  by design." **Uncommitted as of this entry** — owner reviewing.
+
 ## 2026-08-07 — Prepended the story opener to the live Reddit post body
 
 Owner wanted the "My AI coding agent said nothing had changed..." line (the would-be

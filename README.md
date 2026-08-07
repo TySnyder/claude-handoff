@@ -2,8 +2,14 @@
 
 My AI coding agent once told me nothing had changed — while a whole feature sat
 merged and already live. It wasn't lying; it was reading an old handoff doc and
-trusting it, the same way I would have. So I built claude-handoff: a tool that
-catches that before it happens again, and saves you tokens along the way.
+trusting it, the same way I would have.
+
+So I built claude-handoff. Built for Claude Code (or any AI coding agent), it keeps
+your agent from losing track of your project between sessions and keeps your token
+usage to a minimum — avoiding costly auto-compaction and nudging you when it's
+actually the best time to start a fresh chat window, so your agent stays up to speed
+without missing a beat. As a bonus, it also catches your agent when it confidently
+repeats something that's no longer true.
 
 Here's how it catches it: every project gets a `HANDOFF.md`, a short running note on
 where things stand. Any claim in it that's bold, load-bearing, or more than about a
