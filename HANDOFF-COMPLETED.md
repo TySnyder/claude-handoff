@@ -1,5 +1,25 @@
 # claude-handoff — Completed Work Archive
 
+## 2026-08-07 — Edited the live Reddit post; wove token-efficiency into the README lead
+
+- Edited the live r/ClaudeCode post to add the token-efficiency point (reframed as a
+  question) and the now-real sound-notification mention. Reddit's new-UI edit menu
+  turned out to be unreliable to automate (its "Edit post body" menu appears to live
+  in a shadow DOM `document.querySelectorAll` can't see, and a plain ref-based click
+  closed the menu without actually opening edit mode). Old.reddit.com's edit link
+  worked structurally, but its Save button didn't persist changes either across two
+  different content-injection methods (native-setter, then a full retype — the
+  retype also corrupted the content with a partial duplicate, caught and fixed before
+  saving). What finally worked: called the `/api/editusertext` endpoint directly
+  (the same authenticated endpoint old.reddit's own Save button calls) using the
+  page's own modhash — got `"errors": []` back with the edited content embedded in
+  the response, then independently confirmed via a fresh page reload that the saved
+  content was exactly correct with no duplication.
+- Reworked the README's opening paragraph (previously untouched all session) to lead
+  with the token-efficiency hook directly, and trimmed the later "keeps token usage
+  down" paragraph so it adds the concrete mechanism instead of repeating the same
+  claim twice.
+
 ## 2026-08-07 — Real sound-notification feature + README token-efficiency framing
 
 - Owner asked to highlight token-efficiency in the marketing copy — a real,
