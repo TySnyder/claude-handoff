@@ -1,8 +1,8 @@
 # claude-handoff — Handoff Director
 
-Updated: 2026-08-07 (end of a very long session). README opener finalized and
-committed (`6de48de`). r/ClaudeCode post is live and final. Reddit API credential
-path abandoned twice. Detail in `HANDOFF-COMPLETED.md`.
+Updated: 2026-08-07. Two notify-only reminder routines created. README's closing-block
+bullet strengthened. r/ClaudeCode post is live and final. Reddit API credential path
+abandoned twice. Detail in `HANDOFF-COMPLETED.md`.
 
 ## Start here
 
@@ -11,44 +11,46 @@ Read `CLAUDE.md`, then this file, then run `git log --oneline -8` and
 
 ## Current state
 
-Everything from tonight is committed and pushed — working tree is clean. Nothing is
-mid-edit.
+**Two PushNotification-only cloud routines are live** (created this session via the
+`schedule` skill / `RemoteTrigger`, environment_id `env_01DpjECY7qjLQ3kLSJT23LyH` — the
+earlier `env_01493wyDbAi3zfXPF89TFWUA` no longer exists, don't reuse it):
+
+- `trig_01UtAbe1SLzZRB5MJk6K1hnj` — fires Sat 2026-08-08 15:00 UTC (9am MDT), reminds to
+  post claude-handoff to r/ClaudeAI.
+- `trig_017XajQLw2awbrPmvMYrfmNJ` — fires Mon 2026-08-10 15:00 UTC (9am MDT), reminds to
+  post claude-handoff to Show HN (date confirmed by owner this session).
+
+Both are notify-only by design — cannot post themselves; actual posting happens live
+with the owner via browser automation, same as the r/ClaudeCode post.
+
+**README.md: edited this session, not yet committed.** The "closing block" bullet
+under "The pattern" was strengthened per owner feedback (it already existed in
+`docs/PROTOCOL.md` and `templates/CLAUDE-md-snippet.md` too — owner wanted it framed
+as more of a differentiator, not added from scratch). 143 lines, within budget.
 
 **r/ClaudeCode post: final, do not touch.** Live with the story-opener body edit
-applied. It has 2 substantive comments — don't delete/repost; a reply is the only
-reasonable future action, not an edit.
-
-**README.md: final, committed.** Opens with a concrete story (mirrors the Reddit
-post), then the owner's own content on token-savings/auto-compaction/staying-in-sync
-(paraphrased version, owner-confirmed as final — don't re-litigate wording), then a
-plain-language explanation of the stale-claim detection mechanism. The earlier
-paragraph-2/"problem this solves" redundancy is fixed.
+applied. 2 substantive comments — reply only, don't delete/repost.
 
 **Reddit API credentials: dropped, don't revisit unprompted.** Hit a Responsible
-Builder Policy registration wall twice, even after the owner completed additional
-Reddit signup steps. If scheduling comes up again, the fallback design is a cloud
-routine that only fires a `PushNotification` reminder (no browser/API access needed
-for that) — actual posting still happens live together via ego-browser, same as
-tonight's post.
+Builder Policy registration wall twice. Don't attempt this path again unless the owner
+raises it fresh.
 
 ## Open decisions
 
-1. **Show HN date.** r/ClaudeAI is set for Saturday 8/8. Show HN was moved off
-   Sunday for engagement reasons but never got a firm date — needs the owner's input.
-2. Whether the "hosted dashboard on top of claude-handoff" idea (the one plausible
-   profitable pivot from the go-to-market session) is worth scoping separately —
-   explicitly deferred, not started.
+Whether the "hosted dashboard on top of claude-handoff" idea (the one plausible
+profitable pivot from the go-to-market session) is worth scoping separately —
+explicitly deferred, not started.
 
 ## Next steps
 
-1. Get the owner's Show HN date, then set up two `PushNotification`-only cloud
-   routines (`schedule` skill / `RemoteTrigger`, environment_id
-   `env_01493wyDbAi3zfXPF89TFWUA`) for r/ClaudeAI (Sat 8/8) and Show HN — notify-only,
-   the routine cannot post itself.
+1. **Commit the README.md change** (git diff is uncommitted right now — see
+   `git status`).
 2. Finish the adversarial second-pass review of `README.md` and `templates/` for
    their own standalone issues — flagged across multiple sessions now, still hasn't
    happened.
 3. Monitor the r/ClaudeCode post's 2 comments for replies worth engaging with.
+4. When the reminder routines fire (8/8, 8/10), actually post — the routines only
+   notify.
 
 ---
 

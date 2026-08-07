@@ -78,8 +78,10 @@ Two files at the project root, plus a rule for how they're maintained:
   again, not just re-read and repeated.
 - **The closing block** — every session-ending or handoff-writing response ends with a
   literal, copy-pasteable `## Start the new window with` block naming the *exact* next
-  action, not "read HANDOFF.md." If a decision is still pending, a test is red, or an
-  environment gate is required, that goes in the block too — a fresh session has zero
+  action, not "read HANDOFF.md." Most handoff patterns stop at pointing to a file and
+  leave the next session to reconstruct state from it. This one goes further: it forces
+  the exact next prompt, plus anything reading alone wouldn't surface — a pending
+  decision, a red test, a required environment step — because a fresh session has zero
   memory of the conversation that produced it.
 
 See [`docs/PROTOCOL.md`](docs/PROTOCOL.md) for the full rule set.
