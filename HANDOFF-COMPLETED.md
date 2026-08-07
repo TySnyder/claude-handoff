@@ -1,5 +1,51 @@
 # claude-handoff — Completed Work Archive
 
+## 2026-08-07 — Adversarial second-pass review of README.md and templates/ (`3f88e20`)
+
+Finally done — flagged across multiple prior sessions, never executed until now. Found
+and fixed 4 real drift/consistency bugs:
+
+- README's "Installing this in a project" commands (`cp skills/handoff-install/SKILL.md
+  ...`, `cp templates/HANDOFF.md ...`) use paths relative to a repo checkout, but
+  nothing in the README told the reader to clone the repo first — followed literally
+  from an arbitrary directory it fails with "No such file or directory." Added a
+  `git clone` step before the install instructions.
+- README's own "closing block" bullet asserted the feature's value without stating the
+  fencing mechanism (`## Start the new window with` must render as an actual fenced
+  code block in chat, not a rendered heading) — the exact rule that commit `ff34af4`
+  made explicit everywhere else (`docs/PROTOCOL.md`, `templates/CLAUDE-md-snippet.md`,
+  global `CLAUDE.md`) but not in README.md itself. Added the missing sentence.
+- README's "Stack" section said "one Claude Code skill file"; there are two
+  (`skills/handoff-install/SKILL.md`, `skills/summarize/SKILL.md`) — the Installing
+  section above it describes both, so the doc contradicted itself. Fixed the count.
+  (Project `CLAUDE.md` line 8 has the identical stale count, same root cause — left
+  alone, out of this review's stated file scope of README.md/templates/.)
+- The `ff34af4` fencing-rule fix also missed two files that duplicate the same closing-
+  block spec: `skills/handoff-install/SKILL.md`'s embedded copy of the CLAUDE.md
+  protocol block, and `skills/summarize/SKILL.md`'s step 6. Neither told an installing
+  project about the fencing requirement at all. Propagated the same bullet to both.
+
+Not fixed, flagged only: `templates/hooks/check-handoff-staleness.sh`'s
+`awk '{print $2}'` mis-parses `git status --porcelain` output for filenames with
+spaces and for renames (`R  old -> new`) — real edge-case bug, low severity for a
+best-effort, fail-open nudge script, left as-is.
+
+## 2026-08-07 — Closing-block fencing rule made explicit (`ff34af4`), applied globally
+
+The rule that the "Start the new window with" block must be a literal fenced code
+block in chat output was previously conveyed only by example formatting; it drifted
+(chat output started mirroring `HANDOFF.md`'s own heading style instead of fencing).
+Now stated explicitly in `docs/PROTOCOL.md`, in `templates/CLAUDE-md-snippet.md`, and
+in the owner's global `CLAUDE.md` (outside this repo, governs actual behavior across
+all projects).
+
+## 2026-08-07 — README.md finalized, closing-block bullet strengthened (`eb124f0`)
+
+The "closing block" bullet under "The pattern" was strengthened per owner feedback (it
+already existed in `docs/PROTOCOL.md` and `templates/CLAUDE-md-snippet.md` too — owner
+wanted it framed as more of a differentiator, not added from scratch). 143 lines,
+within budget at the time.
+
 ## 2026-08-07 — README opener settled after several rounds of verbatim-vs-paraphrase
 
 After the regression fix (see next entry down), owner pasted their original draft
