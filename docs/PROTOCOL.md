@@ -81,6 +81,11 @@ Rules for what goes in it:
 - **Assume zero memory of the conversation that produced this.** If a fact only
   exists in the chat that just ended, it belongs in `HANDOFF.md`'s body before the
   block is written — not in the block alone, and not left implied.
+- **In chat output, this must be an actual fenced code block** — the heading and
+  message together, inside the fence — not a rendered markdown heading with prose
+  underneath. A rendered heading isn't one clean copy-paste unit; a fence is. (Inside
+  `HANDOFF.md` itself, `## Start the new window with` is a normal section header —
+  this rule is about what gets said in chat, not the file.)
 
 ## When to update `HANDOFF.md`
 
