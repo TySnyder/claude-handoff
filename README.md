@@ -1,9 +1,11 @@
 # claude-handoff
 
-A small, opinionated protocol for keeping an AI coding agent (Claude Code, or anything
-similar) oriented across sessions on a project that takes longer than one sitting —
-cheap enough to read cold that switching to a fresh chat window is a choice you make
-on purpose, not a compromise you're forced into once a session gets expensive.
+claude-handoff keeps your project on track while saving you tokens. Built for Claude
+Code (or any AI coding agent), it keeps your agent from losing the thread of your
+project between sessions — avoiding costly auto-compaction and nudging you when it's
+actually a good time to start a fresh chat window, so your agent stays up to speed
+without missing a beat. As a bonus, it also catches your agent when it confidently
+repeats something that's no longer true.
 
 ## The problem this solves
 

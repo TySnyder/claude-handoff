@@ -1,5 +1,43 @@
 # claude-handoff — Completed Work Archive
 
+## 2026-08-07 — Reddit API dead end, scheduling pivot, README rewritten twice more
+
+- **Reddit API credential path abandoned.** Owner wanted true unattended scheduled
+  posting for r/ClaudeAI (Tue 8/11) and Show HN (Wed 8/12). Discovered cloud routines
+  (`RemoteTrigger`/`schedule` skill) run sandboxed with zero access to the local
+  ego-browser session Reddit posting depends on — no Reddit MCP connector or API
+  credential exists either. Tried setting up a real Reddit OAuth "script" app
+  instead: hit a new "Responsible Builder Policy" registration gate mid-flow
+  (confirmed via `www.reddit.com/prefs/apps` directly — the account, even after the
+  owner registered as a developer, still can't submit the create-app form; it just
+  re-displays the registration-required message). Also confirmed local scheduling
+  (`CronCreate`) is session-only and dies if this window ever closes, so it can't
+  span multiple days either. **Decision: drop true automation.** Landed on a working
+  middle path — a cloud routine whose only job is firing a `PushNotification` at the
+  target time (no browser/API access needed for that), then posting happens live
+  together via ego-browser when the owner sees it, same mechanism as tonight's
+  r/ClaudeCode post.
+- **Timing renegotiated.** Owner wants sooner than Tue/Wed — landed on r/ClaudeAI
+  Saturday 8/8 and Show HN moved to a weekday (not Sunday) after I flagged that
+  weekend timing hurts both, especially HN's algorithm. Routines not yet created —
+  paused for the title/wording discussion below.
+- **Traction check + wording pass.** Owner read low engagement (score 2, 0 comments)
+  on the r/ClaudeCode post as a title problem. Checked the actual numbers: post was
+  under an hour old, submitted ~2am Eastern — not a meaningful signal either way,
+  said so plainly rather than agreeing or dismissing without checking. Independently
+  agreed the wording was worth fixing regardless: proposed and the owner accepted a
+  plainer title ("My AI coding agent said nothing had changed — a whole feature was
+  already merged and live. I built a tool so that doesn't happen again.") and a
+  plainer README opener dropping "opinionated protocol" jargon. **Discovered Reddit
+  does not support editing a post's title after submission** (only body text) —
+  flagged this before promising anything; the live post's title is now permanent
+  unless deleted and reposted, which the owner hasn't decided on yet given the post
+  has real (if small) traction already.
+- **README opener rewritten twice more** this round: first to drop "opinionated
+  protocol"/"handoff doc" jargon per the title feedback, then again because the
+  token-savings point got buried in a trailing clause — now reads "It also saves
+  tokens:" as its own explicit sentence. Uncommitted as of this entry.
+
 ## 2026-08-07 — Edited the live Reddit post; wove token-efficiency into the README lead
 
 - Edited the live r/ClaudeCode post to add the token-efficiency point (reframed as a
