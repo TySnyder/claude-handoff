@@ -92,6 +92,9 @@ into `HANDOFF-1.md`, `HANDOFF-2.md`, … and turn `HANDOFF.md` into a short inde
   interpretation, a red test, a required setup step.
 - Any fact that exists only in this chat must land in `HANDOFF.md`'s body before this
   block — the new window starts with zero memory.
+- In chat output, render it as an actual fenced code block — the heading and message
+  together, inside the fence — not a rendered markdown heading with prose underneath.
+  A heading isn't one clean copy-paste unit; a fence is.
 
 ### 7. Write the files, then confirm
 

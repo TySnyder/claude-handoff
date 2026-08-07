@@ -82,11 +82,20 @@ Two files at the project root, plus a rule for how they're maintained:
   leave the next session to reconstruct state from it. This one goes further: it forces
   the exact next prompt, plus anything reading alone wouldn't surface — a pending
   decision, a red test, a required environment step — because a fresh session has zero
-  memory of the conversation that produced it.
+  memory of the conversation that produced it. In chat output it must be an actual
+  fenced code block, not a rendered markdown heading with prose underneath — a heading
+  isn't one clean copy-paste unit, a fence is.
 
 See [`docs/PROTOCOL.md`](docs/PROTOCOL.md) for the full rule set.
 
 ## Installing this in a project
+
+Clone this repo first — the commands below assume you're standing in it:
+
+```sh
+git clone https://github.com/TySnyder/claude-handoff.git
+cd claude-handoff
+```
 
 **One step:** install [`skills/handoff-install/SKILL.md`](skills/handoff-install/SKILL.md)
 as a Claude Code skill, then run it in your project:
@@ -134,7 +143,7 @@ written:
 ## Stack
 
 None — this is a documentation and prompt-engineering package, not an application.
-Plain markdown templates and one Claude Code skill file.
+Plain markdown templates and two Claude Code skill files.
 
 ## Working on this project
 

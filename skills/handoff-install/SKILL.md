@@ -147,6 +147,9 @@ Create `CLAUDE.md` at the root if it doesn't exist. Append this block verbatim
   - Assume the new window has **zero memory** of this conversation — if a fact only
     exists in the chat, it belongs in `HANDOFF.md`'s body before the block, not in
     the block alone.
+  - In chat output, render it as an actual fenced code block — the heading and
+    message together, inside the fence — not a rendered markdown heading with prose
+    underneath. A heading isn't one clean copy-paste unit; a fence is.
 - **Update `HANDOFF.md` continuously**, not just at a deliberate "end of session" —
   after each verified slice, and whenever a decision is made that a future session
   would otherwise have to re-derive. There is no reliable signal for "the user is
