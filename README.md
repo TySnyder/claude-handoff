@@ -1,7 +1,9 @@
 # claude-handoff
 
 A small, opinionated protocol for keeping an AI coding agent (Claude Code, or anything
-similar) oriented across sessions on a project that takes longer than one sitting.
+similar) oriented across sessions on a project that takes longer than one sitting —
+cheap enough to read cold that switching to a fresh chat window is a choice you make
+on purpose, not a compromise you're forced into once a session gets expensive.
 
 ## The problem this solves
 
@@ -23,10 +25,10 @@ different, longer-lived thing: two files checked into the repo, rewritten
 continuously across weeks of sessions, with an explicit rule for catching stale
 claims before they get repeated — not a snapshot taken once and left to rot.
 
-**It also keeps token usage down.** Reading a 150-line `HANDOFF.md` on a fresh session
-costs a fraction of what re-explaining context — or riding one session out into
-auto-compaction — costs. That's what makes starting a new chat window a deliberate,
-cheap choice instead of something you're forced into once a session gets unwieldy.
+**Cheap by design.** Reading a 150-line `HANDOFF.md` on a cold start costs a fraction
+of what re-explaining context — or riding one session out into auto-compaction —
+costs. That's the whole point of keeping the director small instead of letting it
+grow into a log.
 
 ## What it actually catches
 
